@@ -33,6 +33,7 @@ public class User {
     }
 
     public User(Integer id, String name, Date birthdate) {
+        super();
         this.id = id;
         this.name = name;
         this.birthdate = birthdate;
