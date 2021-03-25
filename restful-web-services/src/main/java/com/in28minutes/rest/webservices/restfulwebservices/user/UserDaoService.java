@@ -3,12 +3,13 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import java.util.Iterator;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserDaoService {
-    
+
     private static List<User> users = new ArrayList<User>();
     private static int usersCount = 3;
 
@@ -18,9 +19,9 @@ public class UserDaoService {
         users.add(new User(3, "Jack", new Date()));
     }
 
-    //findOne
+    // findOne
     public User findOne(int id) {
-        for (User user: users) {
+        for (User user : users) {
             if (user.getId() == id) {
                 return user;
             }
@@ -28,18 +29,31 @@ public class UserDaoService {
         return null;
     }
 
-    //findAll
+    // findAll
     public List<User> findAll() {
         return users;
     }
 
-    //save
+    // save
     public User save(User user) {
         if (user.getId() == null) {
             user.setId(++usersCount);
         }
         users.add(user);
         return user;
+    }
+
+    // delete
+    public User deleteById(int id) {
+        Iterator<User> iterator = users.iterator();
+        while (iterator.hasNext()) {
+            User user = iterator.next();
+            if (user.getId() == id) {
+                iterator.remove();
+                return user;
+            }
+        }
+        return null;
     }
 
 }
