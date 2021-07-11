@@ -8,7 +8,6 @@ public class HelloWorldBean {
         this.message = message;
     }
 
-
     public String getMessage() {
         return this.message;
     }
@@ -17,12 +16,9 @@ public class HelloWorldBean {
         this.message = message;
     }
 
-
     @Override
     public String toString() {
-        return "{" +
-            " message='" + getMessage() + "'" +
-            "}";
+        return "{" + " message='" + getMessage() + "'" + "}";
     }
-    
+
 }
